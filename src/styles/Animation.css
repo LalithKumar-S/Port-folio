@@ -1,0 +1,107 @@
+.name {
+    font-family: sans-serif;
+    display: inline-block;
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    position: relative;
+    overflow: hidden;
+    color: white; /* Initial text color */
+}
+
+.name::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%; /* Start off-screen */
+    width: 100%;
+    height: 100%;
+    background-color: white; /* Sliding background */
+    z-index: 0; /* Background behind text */
+    transition: left 1.5s ease-in-out;
+    animation: slideIn 1.5s ease-in-out forwards;
+    color: black;
+    /* animation: textColorChange 1.5s ease-in-out forwards; */
+}
+
+.name:hover::after {
+    left: 100%; /* Move background out on hover */
+    /* animation: slideInHover 1.5s ease-in-out forwards; */
+    animation: textColorChangeHover 1.5s ease-in-out forwards;
+}
+
+/* .name span {
+    position: relative;
+    z-index: 1; 
+    color: white; 
+    transition: color 1.5s ease-in-out; 
+    animation: textColorChange 1.5s ease-in-out forwards;
+} */
+
+/* .name:hover span {
+    animation: textColorChangeHover 1.5s ease-in-out forwards;
+} */
+
+/* Background animation on page load */
+@keyframes slideIn {
+    0% {
+        left: -100%;
+    }
+    50% {
+        left: 0%; /* Background covers text */
+    }
+    100% {
+        left: 100%; /* Background moves out */
+    }
+}
+
+/* Background animation on hover */
+@keyframes slideInHover {
+    0% {
+        left: -100%;
+    }
+    50% {
+        left: 0%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* Text color change animation on page load */
+@keyframes textColorChange {
+    0% {
+        color: white;
+    }
+    25% {
+        color: white;
+    }
+    50% {
+        color: black; /* Text turns black when background reaches it */
+    }
+    75% {
+        color: black;
+    }
+    100% {
+        color: white; /* Text turns white when background leaves */
+    }
+}
+
+/* Text color change animation on hover */
+@keyframes textColorChangeHover {
+    0% {
+        color: white;
+    }
+    25% {
+        color: white;
+    }
+    50% {
+        color: black; /* Text turns black when background reaches it */
+    }
+    75% {
+        color: black;
+    }
+    100% {
+        color: white; /* Text turns white when background leaves */
+    }
+}
